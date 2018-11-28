@@ -1,0 +1,37 @@
+<div fxLayout="column" fxFlexFill fxLayoutAlign="center center" style="background-image:url('../../../assets/login11.jpg');
+height: 100%;
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover; ">
+    <div fxLayout="column" >
+        <div class="alert alert-danger" *ngIf="mode==1">
+            <strong>Email or password is invalid!!!</strong>
+        </div>
+        <div class=" mat-elevation-z4">
+            <mat-card>
+                <mat-card-title>User login
+                  <!--  <a class="redirect" [routerLink]="['/sigup']">Register</a>-->
+                </mat-card-title>
+                <mat-card-content>
+                    <form fxLayout="column" #f="ngForm" fxLayoutAlign="start stretch" [formGroup]="userForm" (ngSubmit)="login(f.value)">
+                        <mat-form-field class="full-width">
+                          <input type="email" id="email" class="input" placeholder="Please enter your email"
+                                 formControlName="email" required matInput>
+                        </mat-form-field>
+                        <div *ngIf="formErrors.email" class="help is-danger">
+                            {{ formErrors.email }}
+                        </div>
+                        <mat-form-field class="full-width">
+                            <input type="password" id="password" class="input" placeholder="please  enter your password"
+                            formControlName="password" required matInput>
+                        </mat-form-field>
+                        <div *ngIf="formErrors.password" class="help is-danger">
+                            {{ formErrors.password }}
+                        </div>
+                        <button mat-raised-button color="primary"[disabled]="!userForm.valid" type="submit">log in</button><!--[disabled]="!userForm.valid"-->
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
